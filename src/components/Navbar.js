@@ -55,7 +55,17 @@ function Navbar() {
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
-                Gallary
+                Gallery
+              </Link>
+            </li>
+
+            <li className='nav-item'>
+              <Link
+                to='/UserPage'
+                className='nav-links'
+                onClick={closeMobileMenu}
+              >
+                User
               </Link>
             </li>
 
