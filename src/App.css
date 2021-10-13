@@ -6,9 +6,10 @@
 }
 
 .home,
-.services,
-.products,
-.sign-up {
+.Products,
+.Recipe,
+.Gallery,
+.signup {
   display: flex;
   height: 90vh;
   align-items: center;

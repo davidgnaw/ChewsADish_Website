@@ -1,6 +1,12 @@
 import React from 'react';
 import '../../App.css';
+import PopularCard from '../PopularCard'
 
-export default function Products() {
-  return <h1 className='popular'>Popular</h1>;
+export default function Popular() {
+  return(
+    <>
+      <PopularCard />
+    </>
+
+  );
 }
