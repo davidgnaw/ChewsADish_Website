@@ -21,13 +21,13 @@ function ProjectCard() {
            
             <BtnGroup>
               
-              <a
+              <a 
                 className="btn PrimaryBtn"
                 href={list.demo_url}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Go to Post ➜
+                <button type="button" class="btn"> Go to Post ➜ </button>
               </a>
             </BtnGroup>
           </CardRight>

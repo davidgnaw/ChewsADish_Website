@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 
+
+
+
 import {
   HeroContainer,
   HeroWrapper,
@@ -26,6 +29,18 @@ function Hero() {
             <p>
               Coding is temporary, cooking is forever.
             </p>
+          
+            <a href='#'>
+             <button type="button" class="btn">
+              View Profile
+              </button>
+              </a>
+              
+
+
+  
+
+          
           </HeroLeft>
           <HeroRight>
             <Image
