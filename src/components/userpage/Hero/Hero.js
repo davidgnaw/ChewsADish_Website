@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom'
 
 
 
@@ -30,16 +31,12 @@ function Hero() {
               Coding is temporary, cooking is forever.
             </p>
           
-            <a href='#'>
-             <button type="button" class="btn">
-              View Profile
-              </button>
-              </a>
-              
-
-
+            <Link to="/UserProfile">
+          <button variant="outlined">
+          User Settings
+           </button>
+            </Link>
   
-
           
           </HeroLeft>
           <HeroRight>

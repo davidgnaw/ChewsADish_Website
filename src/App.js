@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Popular from './components/pages/Popular'
 import Gallary from './components/pages/Gallary'
 import UserPage from './components/pages/UserPage'
+import UserProfile from './components/pages/UserProfile'
 import SignUp from './components/pages/SignUp'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path='/Popular' exact component={Popular} />
           <Route path='/Gallary' exact component={Gallary} />
           <Route path='/UserPage' exact component={UserPage} />
+          <Route path='/UserProfile' exact component={UserProfile} />
           <Route path='/SignUp' exact component={SignUp} />
         </Switch>
       </Router>

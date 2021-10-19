@@ -5,7 +5,7 @@ import Hero from "../userpage/Hero/Hero";
 import Projects from "../userpage/Projects/Projects";
 
 
-function Home() {
+function UserPage() {
   return (
     <>
       <Hero />
@@ -14,4 +14,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default UserPage;
