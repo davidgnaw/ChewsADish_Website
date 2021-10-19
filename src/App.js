@@ -7,6 +7,7 @@ import Popular from './components/pages/Popular'
 import Gallary from './components/pages/Gallary'
 import UserPage from './components/pages/UserPage'
 import UserProfile from './components/pages/UserProfile'
+import CreateYourOwnRecipe from './components/pages/CreateYourOwnRecipe';
 import SignUp from './components/pages/SignUp'
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path='/Gallary' exact component={Gallary} />
           <Route path='/UserPage' exact component={UserPage} />
           <Route path='/UserProfile' exact component={UserProfile} />
+          <Route path='/CreateYourOwnRecipe' exact component={CreateYourOwnRecipe}/>
           <Route path='/SignUp' exact component={SignUp} />
         </Switch>
       </Router>
