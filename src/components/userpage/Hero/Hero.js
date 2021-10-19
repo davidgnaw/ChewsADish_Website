@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom'
+import Button from 'react-bootstrap/Button'
 
 
 
@@ -30,11 +31,11 @@ function Hero() {
             <p>
               Coding is temporary, cooking is forever.
             </p>
-          
+          <br></br>
             <Link to="/UserProfile">
-          <button variant="outlined">
+          <Button variant="dark" className="btn-dark">  
           User Settings
-           </button>
+           </Button>
             </Link>
   
           

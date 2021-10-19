@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../App.css';
+import Button from 'react-bootstrap/Button'
 
 
 function UserProfile() {
@@ -36,7 +37,7 @@ function UserProfile() {
           <div className = 'profileHeaders'>
         <label> Profile Picture </label>
         </div>
-        <div className = 'profileOptions'>
+        <div className = 'profilePicture'>
       <input
         type="file"
         accept="image/*"
@@ -48,8 +49,8 @@ function UserProfile() {
       />
       <div 
         style={{
-          height: "60px",
-          width: "60px",
+          height: "200px",
+          width: "200px",
           border: "1px dashed black"
         }}
         onClick={() => imageUploader.current.click()}
@@ -57,8 +58,8 @@ function UserProfile() {
         <img
           ref={uploadedImage}
           style={{
-            width: "3.5%",
-            height: "auto",
+            width: "200px",
+            height: "200px",
             position: "absolute"
           }}
         />
@@ -87,7 +88,7 @@ function UserProfile() {
       </div>
 
       <div className = 'profileOptions'>
-        <button>Submit</button>
+        <Button variant = 'dark'>Submit</Button>
       </div>
 
     </div>
