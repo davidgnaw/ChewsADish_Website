@@ -39,3 +39,39 @@
   align-items: center;
   height: 30vh;
 }
+
+.CreateYourOwnRecipe {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.CreateYourOwnRecipe label{
+  text-align: left;
+  display: block;
+}
+
+.CreateYourOwnRecipe h2{
+  font-size: 30px;
+  color: #000000;
+  margin-bottom: 40px;
+}
+
+.CreateYourOwnRecipe input,
+.CreateYourOwnRecipe textarea,
+.CreateYourOwnRecipe select {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  box-sizing: block;
+}
+
+.CreateYourOwnRecipe button {
+  background: #1a0949;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer
+}

@@ -37,6 +37,12 @@ function Hero() {
           User Settings
            </Button>
             </Link>
+            <br></br>
+            <Link to="/CreateYourOwnRecipe">
+          <Button variant="dark" className="btn-dark">  
+          Create your own recipe
+           </Button>
+            </Link>
   
           
           </HeroLeft>
