@@ -68,11 +68,11 @@
   }
   
   .nav-links-mobile {
-    display: none;
+    display: flex;
   }
   
   .menu-icon {
-    display: none;
+    display: flex;
   }
   
   @media screen and (max-width: 960px) {

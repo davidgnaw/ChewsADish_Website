@@ -1,24 +1,27 @@
 import React, { useState } from 'react';
 import '../../App.css';
-import axios from "axios";
 
 const CreateYourOwnRecipe = () => {
-    const[RecipeFor, setRecipeFor] = useState("");
-    const[Ingredients, setIngredients] = useState("");
-    const[Instructions, setInstructions] = useState("");
+    const[name, setRecipeFor] = useState("");
+    const[ingredients, setIngredients] = useState("");
+    const[instruction, setInstructions] = useState("");
     const[Difficulty, setDifficulty] = useState("Medium")
     const[isPending, setIsPending] = useState(false)
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const recipe = {RecipeFor, Ingredients, Instructions, Difficulty}
+        const recipe = {name, instruction, ingredients}
 
         setIsPending(true);
+        fetch("http://localhost:3456/api/recipes",{
+          method:"POST",
+          headers:{"Content-Type": "application/json"},
+          body:JSON.stringify(recipe)
+        }).then(() => {
+          console.log(recipe)
 
-        axios.post("http://localhost:3001/CreateYourOwnRecipe", recipe);
-        console.log(recipe)
-
-        setIsPending(false);
+          setIsPending(false);
+        })
     }
 
 
@@ -32,19 +35,19 @@ const CreateYourOwnRecipe = () => {
                 <input
                   type="text"
                   required
-                  value={RecipeFor}
+                  value={name}
                   onChange={(e) => setRecipeFor(e.target.value)}
                 />
                 <label>Ingredients:</label>
                 <textarea
                   required
-                  value={Ingredients}
+                  value={ingredients}
                   onChange={(e) => setIngredients(e.target.value)}>   
                 </textarea>
                 <label>Instructions:</label>
                 <textarea
                   required
-                  value={Instructions}
+                  value={instruction}
                   onChange={(e) => setInstructions(e.target.value)}>
                 </textarea>
                 <label>Difficulty</label>

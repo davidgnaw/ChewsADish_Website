@@ -2,22 +2,22 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../App.css';
 
-const Signup = () => {
+const Login = () => {
     const[userName, setUserName] = useState("");
     const[password, setPassword] = useState("");
     const[isPending, setIsPending] = useState(false)
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const userInfo = {userName, password}
+        const UserInfo = {userName, password}
 
         setIsPending(true);
         fetch("http://localhost:3456/api/userInfo",{
           method:"POST",
           headers:{"Content-Type": "application/json"},
-          body:JSON.stringify(userInfo)
+          body:JSON.stringify(UserInfo)
         }).then(() => {
-          console.log(userInfo)
+          console.log(UserInfo)
 
           setIsPending(false);
         })
@@ -27,20 +27,18 @@ const Signup = () => {
       <div className="CreateYourOwnRecipe">
           <br></br>
           <br></br>
-          <h2>Sign Up</h2>
+          <h2>Log In</h2>
           <form onSubmit={handleSubmit}>
               <label>UserName:</label>
               <input
-                type="text"
+                type="string"
                 required
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
               />
               <label>Password:</label>
               <input
-                type="password"
-                id="pwd"
-                name="pwd"
+                type="string"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -51,15 +49,15 @@ const Signup = () => {
           </form>
           <br></br>
           <p>
-            Already have account?
+            Don't have account?
           </p>
           <Link
-          to="/Login">
-            Log In
+          to="/SignUp">
+            Sign Up
           </Link>
       </div>
 
   )
 }
 
-export default Signup;
+export default Login;

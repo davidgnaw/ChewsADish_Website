@@ -9,6 +9,7 @@ import UserPage from './components/pages/UserPage'
 import UserProfile from './components/pages/UserProfile'
 import CreateYourOwnRecipe from './components/pages/CreateYourOwnRecipe';
 import SignUp from './components/pages/SignUp'
+import Login from './components/pages/Login';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='/UserProfile' exact component={UserProfile} />
           <Route path='/CreateYourOwnRecipe' exact component={CreateYourOwnRecipe}/>
           <Route path='/SignUp' exact component={SignUp} />
+          <Route path='/Login' exact component={Login} />
         </Switch>
       </Router>
     </>
