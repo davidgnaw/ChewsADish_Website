@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
 
+require("dotenv/config");
 app.use(cors());
 app.use(express.json());
 
@@ -12,8 +13,8 @@ mongoose.connect(
     () =>console.log("database is conncted")    
 );
 
-app.use("/", require("./routes/recipeRouter"));
+app.use("/", require("./Routes/recipeRouter"));
 
 app.listen(3001, function(){
-
+    console.log("server is running")
 })
