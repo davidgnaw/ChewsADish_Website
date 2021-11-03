@@ -29,14 +29,14 @@ const Login = () => {
           <br></br>
           <h2>Log In</h2>
           <form onSubmit={handleSubmit}>
-              <label>UserName:</label>
+              <label>E-mail</label>
               <input
                 type="string"
                 required
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
               />
-              <label>Password:</label>
+              <label>Password</label>
               <input
                 type="string"
                 required
@@ -44,7 +44,7 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
               
-              { !isPending && <button>submit</button>}
+              { !isPending && <button>Log In</button>}
               { isPending && <button disabled>loading...</button>}
           </form>
           <br></br>

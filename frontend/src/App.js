@@ -10,22 +10,30 @@ import UserProfile from './components/pages/UserProfile'
 import CreateYourOwnRecipe from './components/pages/CreateYourOwnRecipe';
 import SignUp from './components/pages/SignUp'
 import Login from './components/pages/Login';
+import Recipes from './components/pages/Recipes';
+import RecipeDetail from './components/pages/RecipeDetail';
 
 function App() {
   return (
     <>
       <Router>
-        <Navbar />
-        <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path='/Popular' exact component={Popular} />
-          <Route path='/Gallary' exact component={Gallary} />
-          <Route path='/UserPage' exact component={UserPage} />
-          <Route path='/UserProfile' exact component={UserProfile} />
-          <Route path='/CreateYourOwnRecipe' exact component={CreateYourOwnRecipe}/>
-          <Route path='/SignUp' exact component={SignUp} />
-          <Route path='/Login' exact component={Login} />
-        </Switch>
+        <div className='App'>
+          <Navbar />
+          <div className='content'>
+          <Switch>
+            <Route path='/' exact component={Home} />
+            <Route path='/Popular' exact component={Popular} />
+            <Route path='/Gallary' exact component={Gallary} />
+            <Route path='/UserPage' exact component={UserPage} />
+            <Route path='/UserProfile' exact component={UserProfile} />
+            <Route path='/CreateYourOwnRecipe' exact component={CreateYourOwnRecipe}/>
+            <Route path='/SignUp' exact component={SignUp} />
+            <Route path='/Login' exact component={Login} />
+            <Route path='/Recipes' exact component={Recipes} />
+            <Route path='/recipe/:id' exact component={RecipeDetail}/>
+          </Switch>
+          </div>
+        </div>
       </Router>
     </>
   );

@@ -4,6 +4,7 @@ import Poster from '../Poster';
 import Card from '../Card';
 import Search from '../Search';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const posts = [ //temporary posts to test search bar functionailty on the Home page
   { id: '1', name: 'First food post' },
@@ -52,6 +53,17 @@ function Home() {
             </div>
             
       <Card />
+
+        <Link to='/Recipes'>
+          <div className='center'>
+            <h2>All Recipes</h2>
+          </div>
+        </Link>
+        <div className='center'>
+          <br></br>
+          <br></br>
+        </div>
+
     </>
   );
 }

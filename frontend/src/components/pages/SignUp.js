@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import '../../App.css';
 
 const Signup = () => {
+    const[email, setEmail] = useState("");
     const[userName, setUserName] = useState("");
     const[password, setPassword] = useState("");
     const[isPending, setIsPending] = useState(false)
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const userInfo = {userName, password}
+        const userInfo = {userName, email, password}
 
         setIsPending(true);
         fetch("http://localhost:3456/api/userInfo",{
@@ -29,14 +30,21 @@ const Signup = () => {
           <br></br>
           <h2>Sign Up</h2>
           <form onSubmit={handleSubmit}>
-              <label>UserName:</label>
+              <label>E-mail</label>
+              <input
+                type="text"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <label>UserName</label>
               <input
                 type="text"
                 required
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
               />
-              <label>Password:</label>
+              <label>Password</label>
               <input
                 type="password"
                 id="pwd"
