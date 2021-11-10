@@ -12,6 +12,8 @@ import SignUp from './components/pages/SignUp'
 import Login from './components/pages/Login';
 import Recipes from './components/pages/Recipes';
 import RecipeDetail from './components/pages/RecipeDetail';
+import Search from './components/pages/Search';
+import IngredientWalmart from './components/pages/IngredientWalmart';
 
 function App() {
   return (
@@ -30,7 +32,9 @@ function App() {
             <Route path='/SignUp' exact component={SignUp} />
             <Route path='/Login' exact component={Login} />
             <Route path='/Recipes' exact component={Recipes} />
-            <Route path='/recipe/:id' exact component={RecipeDetail}/>
+            <Route path='/Recipe/:id' exact component={RecipeDetail}/>
+            <Route path='/Search' exact component={Search}/>
+            <Route path='/Ingredient' exact component={IngredientWalmart}/>
           </Switch>
           </div>
         </div>

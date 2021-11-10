@@ -7,7 +7,7 @@ const RecipeList = (props) => {
         <div className="recipe-preview">
             {Recipes.map((recipe) => (
                 <div className = "recipe-preview" key = {recipe.id}>
-                    <Link to={`/recipe/${recipe._id}`}>
+                    <Link to={`/Recipe/${recipe._id}`}>
                         <h2>{ recipe.name }</h2>
                     </Link>
                 </div>   

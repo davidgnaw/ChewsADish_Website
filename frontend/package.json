@@ -9,6 +9,8 @@
     "axios": "^0.24.0",
     "bootstrap": "^5.1.1",
     "dotenv": "^10.0.0",
+    "fuse": "^0.4.0",
+    "fuse.js": "^6.4.6",
     "install": "^0.13.0",
     "npm": "^8.0.0",
     "react": "^17.0.2",
@@ -45,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/fuse": "^2.6.0"
   }
 }
