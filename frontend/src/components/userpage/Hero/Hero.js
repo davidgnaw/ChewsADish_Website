@@ -13,21 +13,24 @@ import {
   Image,
  
 } from "./HeroElements";
-function Hero() {
+
+const Hero = (props) => {
+  const Hero = props.userInfo
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <main>
-      
-      
+
+    {Hero.map((userInfo) => (
       <HeroContainer>
         <HeroWrapper>
           <HeroLeft>
-            <h1> David Wang </h1>
-            <h5>Master Chef</h5>
+            <h1> {userInfo.userName} </h1>
+            <h5>level: {userInfo.level}</h5>
             <p>
               Coding is temporary, cooking is forever.
             </p>
@@ -54,6 +57,7 @@ function Hero() {
           </HeroRight>
         </HeroWrapper>
       </HeroContainer>
+    )) }
     </main>
   );
 }
