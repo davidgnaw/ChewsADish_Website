@@ -92,14 +92,14 @@ const UserProfile = () => {
         <label> Username </label>
         </div>
         <div className = 'profileOptions'>
-        <input type='text' value={userName} onChange={(e) => setuserName(e.target.value)}/>
+        <input type='string' value={userName} onChange={(e) => setuserName(e.target.value)}/>
         </div>
       
         <div className = 'profileHeaders'>
         <label> Password </label>
         </div>
         <div className = 'profileOptions'>
-        <input type='text' value = {password} onChange={(e) => setpassword(e.target.value)}/> 
+        <input type='password' value = {password} id = "pwd" name = "pwd" onChange={(e) => setpassword(e.target.value)}/> 
       </div>
 s
       <div className = 'profileHeaders'>

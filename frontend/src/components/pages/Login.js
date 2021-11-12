@@ -38,8 +38,10 @@ const Login = () => {
               />
               <label>Password</label>
               <input
-                type="string"
+                type="password"
                 required
+                id="pwd"
+                name="pwd"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
