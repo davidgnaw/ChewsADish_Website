@@ -30,7 +30,8 @@ const Hero = (props) => {
             <h1> {userInfo.userName} </h1>
             <h5>level: {userInfo.level}</h5>
             <p>
-              Coding is temporary, cooking is forever.
+              {userInfo.discription}
+              Add description...
             </p>
           <br></br>
             <Link to="/UserProfile">
@@ -49,8 +50,12 @@ const Hero = (props) => {
           </HeroLeft>
           <HeroRight>
             <Image
-              src="images/chefprofilepic.png"
-              alt="chefprofilepic"
+               src={userInfo.userPicture}
+               alt="profilepic"
+
+              //template photo
+              //src="images/chefprofilepic.png"
+              //alt="chefprofilepic"
             />
           </HeroRight>
         </HeroWrapper>

@@ -29,6 +29,9 @@ const UserProfile = () => {
 
   const [userName, setuserName] = useState(null);
   const [password, setpassword] = useState(null);
+  const [userPicture, setuserPicture] = useState(null);
+  const [discription, setdiscription] = useState(null);
+
   const[isPending, setIsPending] = useState(false)
  
 
@@ -62,8 +65,9 @@ const UserProfile = () => {
         <div className = 'profilePicture'>
       <input
         type="file"
+        value={userPicture}
         accept="image/*"
-        onChange={handleImageUpload}
+        onChange={handleImageUpload, setuserPicture}
         ref={imageUploader}
         style={{
           display: "none"
@@ -106,7 +110,7 @@ s
         <label> Description </label>
         </div>
       <div className = 'profileOptions'>
-        <textarea rows='2' type = 'text' onChange = {detectChange}/>
+        <textarea rows='2' type = 'text' value = {discription} onChange = {setdiscription}/>
       </div>
 
       <div className = 'profileOptions'>

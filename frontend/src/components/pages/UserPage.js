@@ -23,8 +23,8 @@ const UserPage = () => {
   return (
     <>
       { userInfo && <Hero userInfo =  {userInfo}/> }
-      <Projects />
-    </>
+      { userInfo && <Projects userInfo = {userInfo}/> }
+    </> 
   );
 }
 
