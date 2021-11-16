@@ -1,16 +1,30 @@
 import React from 'react';
 import '../../App.css';
+import { useEffect, useState } from "react"
 
 import Hero from "../userpage/Hero/Hero";
 import Projects from "../userpage/Projects/Projects";
 
 
-function UserPage() {
+const UserPage = () => {
+  const [userInfo, setuserInfo] = useState(null);
+
+
+  useEffect(() => {
+      fetch('http://localhost:3456/api/userInfo')
+          .then(res => {
+              return res.json();
+          })
+          .then(data => {
+              setuserInfo(data)
+          })
+  }, []);
+
   return (
     <>
-      <Hero />
-      <Projects />
-    </>
+      { userInfo && <Hero userInfo =  {userInfo}/> }
+      { userInfo && <Projects userInfo = {userInfo}/> }
+    </> 
   );
 }
 

@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 
 
-
-
 import {
   HeroContainer,
   HeroWrapper,
@@ -13,23 +11,27 @@ import {
   Image,
  
 } from "./HeroElements";
-function Hero() {
+
+const Hero = (props) => {
+  const Hero = props.userInfo
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <main>
-      
-      
+
+    {Hero.map((userInfo) => (
       <HeroContainer>
         <HeroWrapper>
           <HeroLeft>
-            <h1> David Wang </h1>
-            <h5>Master Chef</h5>
+            <h1> {userInfo.userName} </h1>
+            <h5>level: {userInfo.level}</h5>
             <p>
-              Coding is temporary, cooking is forever.
+              {userInfo.discription}
+              Add description...
             </p>
           <br></br>
             <Link to="/UserProfile">
@@ -48,12 +50,17 @@ function Hero() {
           </HeroLeft>
           <HeroRight>
             <Image
-              src="images/chefprofilepic.png"
-              alt="chefprofilepic"
+               src={userInfo.userPicture}
+               alt="profilepic"
+
+              //template photo
+              //src="images/chefprofilepic.png"
+              //alt="chefprofilepic"
             />
           </HeroRight>
         </HeroWrapper>
       </HeroContainer>
+    )) }
     </main>
   );
 }

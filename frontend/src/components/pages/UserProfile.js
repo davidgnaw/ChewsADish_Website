@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../App.css';
 import Button from 'react-bootstrap/Button'
 
 
-function UserProfile() {
+const UserProfile = () => {
   
   function detectChange(e){ //for text updates
     console.log(e.target.value)
@@ -26,6 +26,31 @@ function UserProfile() {
       reader.readAsDataURL(file);
     }
   };
+
+  const [userName, setuserName] = useState(null);
+  const [password, setpassword] = useState(null);
+  const [userPicture, setuserPicture] = useState(null);
+  const [discription, setdiscription] = useState(null);
+
+  const[isPending, setIsPending] = useState(false)
+ 
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const user = {userName, password}
+
+    setIsPending(true);
+    fetch("http://localhost:3456/api/userInfo",{
+      method:"POST",
+      headers:{"Content-Type": "application/json"},
+      body:JSON.stringify(user)
+    }).then(() => {
+      console.log(user)
+
+      setIsPending(false);
+    })
+}
+
   
   return (
     <div className='App'>
@@ -33,15 +58,16 @@ function UserProfile() {
         <h2> Change Settings </h2>
         </div>
 
-        
+        <form onSubmit={handleSubmit}>
           <div className = 'profileHeaders'>
         <label> Profile Picture </label>
         </div>
         <div className = 'profilePicture'>
       <input
         type="file"
+        value={userPicture}
         accept="image/*"
-        onChange={handleImageUpload}
+        onChange={handleImageUpload, setuserPicture}
         ref={imageUploader}
         style={{
           display: "none"
@@ -70,28 +96,30 @@ function UserProfile() {
         <label> Username </label>
         </div>
         <div className = 'profileOptions'>
-        <input type='text' onChange={detectChange}/>
+        <input type='string' value={userName} onChange={(e) => setuserName(e.target.value)}/>
         </div>
       
         <div className = 'profileHeaders'>
         <label> Password </label>
         </div>
         <div className = 'profileOptions'>
-        <input type='text' onChange={detectChange}/>
+        <input type='password' value = {password} id = "pwd" name = "pwd" onChange={(e) => setpassword(e.target.value)}/> 
       </div>
-
+s
       <div className = 'profileHeaders'>
         <label> Description </label>
         </div>
       <div className = 'profileOptions'>
-        <textarea rows='2' type = 'text' onChange = {detectChange}/>
+        <textarea rows='2' type = 'text' value = {discription} onChange = {setdiscription}/>
       </div>
 
       <div className = 'profileOptions'>
-        <Button variant = 'dark'>Submit</Button>
+        { !isPending && <button>submit</button>}
+        { isPending && <button disabled>loading...</button>}
       </div>
-
+      </form>
     </div>
+    
   );
 }
 
