@@ -6,7 +6,9 @@ import { Link } from 'react-router-dom';
 function Cards() {
   return (
     <div className='cards'>
-      <h1>Top Popular</h1>
+      <Link to='/popular'>
+        <h1>Top Popular</h1>
+      </Link>
       <div className='cards__container'>
         <div className='cards__wrapper'>
           <ul className='cards__items'>
