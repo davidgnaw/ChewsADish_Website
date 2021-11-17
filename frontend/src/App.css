@@ -131,4 +131,10 @@
   margin: auto;
   width: 60%;
   padding: 10px;
+  white-space: pre-line;
+}
+
+.star {
+  position:relative;
+  left: 20%;
 }

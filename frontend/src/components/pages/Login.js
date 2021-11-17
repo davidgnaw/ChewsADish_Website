@@ -1,25 +1,26 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../App.css';
+import { useHistory } from 'react-router';
 
 const Login = () => {
-    const[userName, setUserName] = useState("");
+    const[email, setEmail] = useState("");
     const[password, setPassword] = useState("");
     const[isPending, setIsPending] = useState(false)
+    const history = useHistory();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const UserInfo = {userName, password}
+        const UserInfo = {email, password}
 
         setIsPending(true);
-        fetch("http://localhost:3456/api/userInfo",{
+        fetch("http://localhost:3456/api/verify/login",{
           method:"POST",
           headers:{"Content-Type": "application/json"},
           body:JSON.stringify(UserInfo)
         }).then(() => {
-          console.log(UserInfo)
-
           setIsPending(false);
+          history.push('/UserPage');
         })
     }
 
@@ -33,8 +34,8 @@ const Login = () => {
               <input
                 type="string"
                 required
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <label>Password</label>
               <input

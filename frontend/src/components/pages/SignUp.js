@@ -1,26 +1,27 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../App.css';
+import { useHistory } from 'react-router';
 
 const Signup = () => {
     const[email, setEmail] = useState("");
     const[userName, setUserName] = useState("");
     const[password, setPassword] = useState("");
-    const[isPending, setIsPending] = useState(false)
+    const[isPending, setIsPending] = useState(false);
+    const history = useHistory();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const userInfo = {userName, email, password}
 
         setIsPending(true);
-        fetch("http://localhost:3456/api/userInfo",{
+        fetch("http://localhost:3456/api/verify/signup",{
           method:"POST",
           headers:{"Content-Type": "application/json"},
           body:JSON.stringify(userInfo)
         }).then(() => {
-          console.log(userInfo)
-
           setIsPending(false);
+          history.go(-1)
         })
     }
 

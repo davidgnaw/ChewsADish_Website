@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../../App.css';
+import { useHistory } from 'react-router';
 
 const CreateYourOwnRecipe = () => {
     const[name, setRecipeFor] = useState("");
@@ -7,6 +8,7 @@ const CreateYourOwnRecipe = () => {
     const[instruction, setInstructions] = useState("");
     const[Difficulty, setDifficulty] = useState("Medium")
     const[isPending, setIsPending] = useState(false)
+    const history = useHistory();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -21,7 +23,8 @@ const CreateYourOwnRecipe = () => {
           console.log(recipe)
 
           setIsPending(false);
-        })
+          history.go(-1);
+        })    
     }
 
 

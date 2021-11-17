@@ -1,6 +1,7 @@
 import '../../App.css'
 import { useParams } from "react-router-dom";
 import useFetch from "../useFetch";
+import { FaStar } from "react-icons/fa"
 
 const RecipeDetail = () => {
     const { id } = useParams();
@@ -15,9 +16,21 @@ const RecipeDetail = () => {
             { recipe && (
                 <article>
                     <h2> { recipe.name }</h2>
+                    <h3> Date </h3>
+                    <p> { recipe.creationDate.slice(0,10) } </p>
+                    <h3> Difficulty </h3>
+                    {[...Array(5)].map((star, i) => {
+                        const ratingValue = i+1
+                        return <label>
+                                    <FaStar className='star' size={30} color={recipe.difficulty >= ratingValue ? "#ffc107" : "#e4e5e9" }/>
+                                </label>
+                    })}
+                    <br></br>
                     <h3> Ingredients </h3>
                     <br></br>
-                    <p> { recipe.ingredients}</p> 
+                    { recipe.ingredients.map((ingredient) => (
+                        <p>{ingredient}</p>
+                    ))}
                     <br></br>
                     <h3> Instructions</h3>
                     <br></br>
