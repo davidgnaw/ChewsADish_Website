@@ -72,7 +72,7 @@ function Navbar() {
               </Link>
             </li>
 
-            <li>
+            <li className = 'nav-item'>
               <Link
                 to='/Signup'
                 className='nav-links'
