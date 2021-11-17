@@ -63,7 +63,11 @@ function Navbar() {
               </Link>
             </li>
 
+<<<<<<< HEAD
             <li className='nav-item'>
+=======
+            <li className = 'nav-item'>
+>>>>>>> 818601b46fa5bea1edf35789cb9388cf216d47cc
               <Link
                 to='/Signup'
                 className='nav-links'
