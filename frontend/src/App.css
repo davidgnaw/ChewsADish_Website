@@ -24,7 +24,6 @@
   background: #fff;
 }
 
-
 .profileOptions {
   display: flex;
   justify-content: center;
@@ -52,12 +51,12 @@
   text-align: center;
 }
 
-.CreateYourOwnRecipe label{
+.CreateYourOwnRecipe label {
   text-align: left;
   display: block;
 }
 
-.CreateYourOwnRecipe h2{
+.CreateYourOwnRecipe h2 {
   font-size: 30px;
   color: #000000;
   margin-bottom: 40px;
@@ -79,7 +78,7 @@
   border: 0;
   padding: 8px;
   border-radius: 8px;
-  cursor: pointer
+  cursor: pointer;
 }
 
 .recipe-preview {
@@ -114,7 +113,7 @@
   text-align: center;
 }
 
-.recipe-detail h3{
+.recipe-detail h3 {
   font-size: 30px;
   color: #000000;
   margin-bottom: 10px;
@@ -124,10 +123,16 @@
 }
 
 .recipe-detail div {
-  margin: 20px 0; 
+  margin: 20px 0;
 }
 
 .recipe-detail p {
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+}
+
+.recipe-detail li {
   margin: auto;
   width: 60%;
   padding: 10px;
