@@ -14,7 +14,7 @@ const UserProfile = () => {
   const uploadedImage = React.useRef(null); 
   const imageUploader = React.useRef(null);
 
-  const handleImageUpload = e => {
+  const handleImageUpload = (e) => {
     const [file] = e.target.files;
     if (file) {
       const reader = new FileReader();
@@ -27,17 +27,17 @@ const UserProfile = () => {
     }
   };
 
-  const [userName, setuserName] = useState(null);
-  const [password, setpassword] = useState(null);
-  const [userPicture, setuserPicture] = useState(null);
-  const [discription, setdiscription] = useState(null);
+  const [userName, setuserName] = useState("");
+  const [password, setpassword] = useState("");
+  const [userPicture, setuserPicture] = useState([]);
+  const [discription, setdiscription] = useState("");
 
   const[isPending, setIsPending] = useState(false)
  
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const user = {userName, password}
+    const user = {userName, password, userPicture, discription}
 
     setIsPending(true);
     fetch("http://localhost:3456/api/userInfo",{
@@ -51,8 +51,11 @@ const UserProfile = () => {
     })
 }
 
+
   
   return (
+
+    
     <div className='App'>
       <div className = 'profileOptions'>
         <h2> Change Settings </h2>
@@ -67,7 +70,7 @@ const UserProfile = () => {
         type="file"
         value={userPicture}
         accept="image/*"
-        onChange={handleImageUpload, setuserPicture}
+        onChange={e => {setuserPicture(e.target.values)}} // issue adding handleImageUpload here
         ref={imageUploader}
         style={{
           display: "none"
@@ -79,7 +82,7 @@ const UserProfile = () => {
           width: "200px",
           border: "1px dashed black"
         }}
-        onClick={() => imageUploader.current.click()}
+        onClick={(e) => imageUploader.current.click()}
       >
         <img
           ref={uploadedImage}
@@ -110,7 +113,7 @@ s
         <label> Description </label>
         </div>
       <div className = 'profileOptions'>
-        <textarea rows='2' type = 'text' value = {discription} onChange = {setdiscription}/>
+        <textarea rows='2' type = 'string' value = {discription} onChange = {(e) => setdiscription(e.target.value)}/>
       </div>
 
       <div className = 'profileOptions'>
