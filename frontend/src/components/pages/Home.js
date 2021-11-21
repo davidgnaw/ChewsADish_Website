@@ -20,7 +20,7 @@ function Home() {
 
         <Link to='/Recipes'>
           <div className='center'>
-            <h2>All Recipes</h2>
+            <button className='homebutton'>All Recipes</button>
           </div>
         </Link>
         <div className='center'>
@@ -29,7 +29,16 @@ function Home() {
         </div>
         <div className='center'>
         <Link to='/Search'>
-          <h2>Look for a Recipe</h2>
+          <button className='homebutton'>Look for a Recipe</button>
+        </Link>
+      </div>
+      <div className='center'>
+          <br></br>
+          <br></br>
+        </div>
+      <div className='center'>
+        <Link to='/ingredient'>
+          <button className='homebutton'>Look for Ingredients and Substitution</button>
         </Link>
       </div>
       <div className='center'>

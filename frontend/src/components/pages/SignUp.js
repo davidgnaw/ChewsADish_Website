@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../App.css';
 import { useHistory } from 'react-router';
+import SingupBackground from './SignupBackground';
 
 const Signup = () => {
     const[email, setEmail] = useState("");
@@ -26,7 +27,9 @@ const Signup = () => {
     }
 
     return(
-      <div className="CreateYourOwnRecipe">
+      <div className='signup-wrap'>
+        <SingupBackground/>
+        <div className="CreateYourOwnRecipe">
           <br></br>
           <br></br>
           <h2>Sign Up</h2>
@@ -66,8 +69,20 @@ const Signup = () => {
           to="/Login">
             Log In
           </Link>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+        </div>
       </div>
-
   )
 }
 

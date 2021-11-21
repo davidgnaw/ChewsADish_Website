@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../../App.css';
 import Fuse from 'fuse.js';
 import RecipeList from '../RecipeList';
+import RandomBackground from './RandomBackground';
 
 const Search = () => {
     const[search,setSearch] = useState('');
@@ -42,6 +43,8 @@ const Search = () => {
 
 
     return(
+        <div className='signup-wrap'>
+            <RandomBackground/>
         <div className="CreateYourOwnRecipe">
             <br></br>
             <h2>Search</h2>
@@ -55,6 +58,33 @@ const Search = () => {
                 />
             </form>
             {recipeResults && <RecipeList recipes = {recipeResults.slice(0,5)}/>}
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+        </div>
         </div>
     )
 }

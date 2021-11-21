@@ -49,6 +49,7 @@
   max-width: 400px;
   margin: 0 auto;
   text-align: center;
+  position: relative;
 }
 
 .CreateYourOwnRecipe label {
@@ -132,8 +133,40 @@
   padding: 10px;
   white-space: pre-line;
 }
+.recipe-detail img{
+  width: 60%;
+  height: auto;
+}
 
 .star {
   position:relative;
   left: 20%;
+}
+
+.recipe-detail a{
+  position:absolute;
+  left: 20.5%
+}
+
+.signup-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.homebutton {
+  background-color: #555555; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.homebutton:hover {
+  transition-duration: 0.4s;
+  background-color: #838383; 
+  color: white;
 }
