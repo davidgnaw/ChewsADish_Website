@@ -16,7 +16,7 @@ const RecipeDetail = () => {
     
     return (
         <div className='signup-wrap'>
-        <RandomBackground/>
+            <RandomBackground/>
         <div className='recipe-detail'>
             { isPending && <div> Loading... </div> }
             { error && <div> {error} </div>}

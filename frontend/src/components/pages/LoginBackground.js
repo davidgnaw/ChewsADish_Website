@@ -1,9 +1,9 @@
 import React from 'react';
-import './signupBackground.css';
+import './loginbackground.css';
 
 function LoginBackground() {
   return (
-    <div className='signup-bg'>
+    <div className='login-bg'>
       <img src='/images/loginBackground.jpg' />
     </div>
   );
