@@ -1,20 +1,21 @@
-import React from 'react';
-import '../../App.css';
-import GalleryPic from '../GalleryPic'
+import React from "react";
+import "../../App.css";
+import GalleryPic from "../GalleryPic";
 // import { useParams } from "react-router-dom";
-// import useFetch from "../useFetch";
-
+import data from "./../../data.json";
 
 const Gallary = () => {
-    const uploadedImage = React.useRef(null);
-    const imageUploader = React.useRef(null);
-
-    return(
-      <>
-        <GalleryPic />
-        </>
-
-      );
-}
+  return (
+    <>
+      <section className="main">
+        <div className="container">
+          {data.map((post) => (
+            <GalleryPic post={post} />
+          ))}
+        </div>
+      </section>
+    </>
+  );
+};
 
 export default Gallary;

@@ -1,34 +1,83 @@
-import React from 'react';
-import './Post.css';
-// import CardItem from './Carditem';
-// import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import "./Post.css";
+import { Link } from "react-router-dom";
 
+export function timeDifference(current, previous) {
+  var msPerMinute = 60 * 1000;
+  var msPerHour = msPerMinute * 60;
+  var msPerDay = msPerHour * 24;
+  var msPerMonth = msPerDay * 30;
+  var msPerYear = msPerDay * 365;
 
-function GalleryPic() {
+  var elapsed = current - previous;
+
+  if (elapsed < msPerMinute) {
+    return Math.round(elapsed / 1000) + " seconds ago";
+  } else if (elapsed < msPerHour) {
+    return Math.round(elapsed / msPerMinute) + " minutes ago";
+  } else if (elapsed < msPerDay) {
+    return Math.round(elapsed / msPerHour) + " hours ago";
+  } else if (elapsed < msPerMonth) {
+    return "approximately " + Math.round(elapsed / msPerDay) + " days ago";
+  } else if (elapsed < msPerYear) {
+    return "approximately " + Math.round(elapsed / msPerMonth) + " months ago";
+  } else {
+    return "approximately " + Math.round(elapsed / msPerYear) + " years ago";
+  }
+}
+
+function GalleryPic({ post }) {
+  console.log(post);
+  const [likes, setLikes] = useState(
+    post.likes || Math.round(Math.random() * 10)
+  );
+  const [isLikedByUser, setIsLikedByUser] = useState(false);
   return (
-    <section class="main">
-      <div class="wrapper">
-          <div class="left-col">
-              <div class="post">
-                  <div class="info">
-                      <div class="user">
-                          <p class="username">ChewsADish</p>
-                      </div>
-                  </div>
-                  <img src="images/img12.jpg" class="post-image" alt=""/>
-                  <div class="post-content">
-                      <div class="reaction-wrapper">
-                          <img src="images/like.jpeg" class="icon" alt=""/>
-                          <img src="images/comment.jpeg" class="icon" alt=""/>
-                      </div>
-                      <p class="likes">666 likes</p>
-                      <p class="description"><span>Shirley Chen </span> Here is my masterpiece!</p>
-                      <p class="post-time">5 minutes ago</p>
-                  </div>
-                </div>
+    <div className="wrapper">
+      <div className="left-col">
+        <div className="gallery-item">
+          <div className="info">
+            <div className="user">
+              <p className="username">ChewsADish</p>
             </div>
           </div>
-    </section>
-  )
+
+          <Link
+            to={"/Gallary/" + post.postId}
+            style={{ textDecoration: "none", color: "initial" }}
+          >
+            <img src={post.media} className="gallery-image" alt="" />
+          </Link>
+          <div className="post-content">
+            <div className="reaction-wrapper">
+              <img
+                src="images/like.jpeg"
+                className="icon"
+                alt=""
+                onClick={() => {
+                  if (!isLikedByUser) {
+                    setIsLikedByUser(true);
+                    setLikes((p) => p + 1);
+                  } else {
+                    setIsLikedByUser(false);
+                    setLikes((p) => p - 1);
+                  }
+                }}
+              />
+              <img src="images/comment.jpeg" className="icon" alt="" />
+            </div>
+            <p className="likes">{likes} likes</p>
+            <p className="description">
+              <span>Username </span>
+              {post.content}
+            </p>
+            <p className="post-time">
+              {timeDifference(new Date(), new Date(post.creationDate))}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 export default GalleryPic;

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect, useRef } from "react";
 import Navbar from './components/Navbar';
 import './App.css';
 import Home from './components/pages/Home';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, withRouter } from 'react-router-dom';
 import Popular from './components/pages/Popular'
 import Gallary from './components/pages/Gallary'
 import UserPage from './components/pages/UserPage'
@@ -15,6 +15,22 @@ import RecipeDetail from './components/pages/RecipeDetail';
 import Search from './components/pages/Search';
 import IngredientWalmart from './components/pages/IngredientWalmart';
 import IngredientDetail from './components/pages/IngredientDetail';
+import SingleGallary from "./components/pages/SingleGallary";
+
+const ScrollIntoView = ({ children, location }) => {
+  const prevLocation = useRef();
+
+  useEffect(() => {
+    if (prevLocation.current !== location.pathname) {
+      window.scrollTo(0, 0);
+      prevLocation.current = location.pathname;
+    }
+  }, [location]);
+
+  return children;
+};
+
+const Scrolled = withRouter(ScrollIntoView);
 
 function App() {
   return (
@@ -27,6 +43,7 @@ function App() {
             <Route path='/' exact component={Home} />
             <Route path='/Popular' exact component={Popular} />
             <Route path='/Gallary' exact component={Gallary} />
+            <Route path="/Gallary/:id" exact component={SingleGallary} />
             <Route path='/UserPage' exact component={UserPage} />
             <Route path='/UserProfile' exact component={UserProfile} />
             <Route path='/CreateYourOwnRecipe' exact component={CreateYourOwnRecipe}/>
