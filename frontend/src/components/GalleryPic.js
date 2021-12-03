@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Post.css";
+// import CardItem from './Carditem';
 import { Link } from "react-router-dom";
 
 export function timeDifference(current, previous) {
@@ -32,6 +33,16 @@ function GalleryPic({ post }) {
     post.likes || Math.round(Math.random() * 10)
   );
   const [isLikedByUser, setIsLikedByUser] = useState(false);
+  const handleLikeClick = () => {
+    if (!isLikedByUser) {
+      setIsLikedByUser(true);
+      setLikes((p) => p + 1);
+    } else {
+      setIsLikedByUser(false);
+      setLikes((p) => p - 1);
+    }
+    // CALL THE API HERE
+  };
   return (
     <div className="wrapper">
       <div className="left-col">
@@ -54,21 +65,13 @@ function GalleryPic({ post }) {
                 src="images/like.jpeg"
                 className="icon"
                 alt=""
-                onClick={() => {
-                  if (!isLikedByUser) {
-                    setIsLikedByUser(true);
-                    setLikes((p) => p + 1);
-                  } else {
-                    setIsLikedByUser(false);
-                    setLikes((p) => p - 1);
-                  }
-                }}
+                onClick={handleLikeClick}
               />
               <img src="images/comment.jpeg" className="icon" alt="" />
             </div>
             <p className="likes">{likes} likes</p>
             <p className="description">
-              <span>Username </span>
+              <span>Shirley Chen </span>
               {post.content}
             </p>
             <p className="post-time">
