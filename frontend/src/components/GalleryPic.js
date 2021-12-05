@@ -54,7 +54,7 @@ function GalleryPic({ post }) {
           </div>
 
           <Link
-            to={"/Gallary/" + post.postId}
+            to={"/Gallary/" + post._id}
             style={{ textDecoration: "none", color: "initial" }}
           >
             <img src={post.media} className="gallery-image" alt="" />

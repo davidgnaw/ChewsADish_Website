@@ -3,22 +3,16 @@ import data from "./../../data.json";
 import { useParams } from "react-router-dom";
 import { timeDifference } from "../GalleryPic";
 import Comment from "../comment";
+import useFetch from "../useFetch";
+import { render } from "react-dom";
 
 export default function SingleGallary() {
-  const params = useParams();
+  const { id } = useParams();
 
-  const currGalleryPost = data.find(
-    (p) => parseInt(p.postId) === parseInt(params.id)
-  );
+  const {data:currGalleryPost, isPending, error} = useFetch('http://localhost:3456/api/gallery/' + id);
 
   const [newComment, setNewComment] = useState("");
-  const [currPost, setCurrPost] = useState({});
 
-  useEffect(() => {
-    const currPostId = params.postId;
-    // Call the API with currPostId to get the single Post
-    setCurrPost(currGalleryPost);
-  }, [currGalleryPost, params.postId]);
 
   const handleNewComment = (e) => {
     e.preventDefault();
@@ -28,21 +22,29 @@ export default function SingleGallary() {
       commentsLikerecieved: 0, // initial value
       commentsCreationdate: new Date().toISOString(),
     };
-    // call API with newCommentToBeSent and postId to add a new comment
+    currGalleryPost.comment.push(newCommentData);
+    fetch("http://localhost:3456/api/gallery/" + id,{
+          method:"POST",
+          headers:{"Content-Type": "application/json"},
+          body:JSON.stringify(currGalleryPost)
+        }).then(() => {
+          console.log(currGalleryPost);
+          //window.location.reload(false);
+        })
     setNewComment("");
-    setCurrPost((p) => {
-      const prev = { ...p };
-      prev.comment = [newCommentData].concat(prev.comment);
-      return prev;
-    });
+    //setCurrPost((p) => {
+    //  const prev = { ...p };
+    //  prev.comment = [newCommentData].concat(prev.comment);
+    //  return prev;
+    //});
   };
 
   const handleDeleteComment = (i) => {
-    setCurrPost((p) => {
-      const prev = { ...p };
-      prev.comment.splice(i, 1);
-      return prev;
-    });
+    //setCurrPost((p) => {
+    //  const prev = { ...p };
+    //  prev.comment.splice(i, 1);
+    //  return prev;
+    //});
   };
 
   return (
@@ -50,6 +52,9 @@ export default function SingleGallary() {
       className="container d-flex justify-content-center mt-4"
       style={{ overflow: "hidden" }}
     >
+    { isPending && <div> Loading... </div> }
+    { error && <div> {error} </div>}
+    {currGalleryPost &&
       <div>
         <div className="row">
           <div className="col-sm-8 vh-100">
@@ -99,11 +104,11 @@ export default function SingleGallary() {
                     Submit
                   </button>
                 </form>
-                {currPost.comment?.map((comment, i) => (
+                {currGalleryPost.comment?.map((comment, i) => (
                   <Comment
                     key={new Date().getMilliseconds() * Math.random()}
                     comment={comment}
-                    postId={currGalleryPost.postId}
+                    postId={currGalleryPost._id}
                     handleDelete={handleDeleteComment}
                     commentId={i}
                   />
@@ -113,6 +118,7 @@ export default function SingleGallary() {
           </div>
         </div>
       </div>
+}
     </div>
   );
 }

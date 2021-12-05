@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { timeDifference } from "./GalleryPic";
 
-export default function Comment({ comment, postId, commentId, handleDelete }) {
+export default function Comment({ comment, _id, commentId, handleDelete }) {
   const [likes, setLikes] = useState(comment.commentsLikerecieved || 0);
   const [isLikedByUser, setIsLikedByUser] = useState(false);
   const handleClick = () => {

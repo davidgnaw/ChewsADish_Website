@@ -6,22 +6,23 @@ import LoginBackground from './LoginBackground';
 
 const Login = () => {
     const[email, setEmail] = useState("");
+    const[userName, setUserName] = useState("");
     const[password, setPassword] = useState("");
-    const[isPending, setIsPending] = useState(false)
+    const[isPending, setIsPending] = useState(false);
     const history = useHistory();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const UserInfo = {email, password}
+        const UserInfo = {userName, email, password}
 
         setIsPending(true);
-        fetch("http://localhost:3456/api/verify/login",{
+        fetch("http://localhost:3456/login",{
           method:"POST",
           headers:{"Content-Type": "application/json"},
           body:JSON.stringify(UserInfo)
         }).then(() => {
           setIsPending(false);
-          history.push('/UserPage');
+          //history.push('/UserPage');
         })
     }
 
@@ -39,6 +40,13 @@ const Login = () => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+              />
+              <label>UserName</label>
+              <input
+                type="string"
+                required
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
               />
               <label>Password</label>
               <input
