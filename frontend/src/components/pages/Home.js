@@ -17,7 +17,15 @@ function Home() {
     
             
       <Card />
-
+        <a href='https://www.youtube.com/playlist?list=PLI5i7pWbEmk-metn38dNJ1e4zDUSYzllb'>
+          <div className='center'>
+            <button className='homebutton'>Tutorial Videos</button>
+          </div>
+        </a>
+        <div className='center'>
+          <br></br>
+          <br></br>
+        </div>
         <Link to='/Recipes'>
           <div className='center'>
             <button className='homebutton'>All Recipes</button>

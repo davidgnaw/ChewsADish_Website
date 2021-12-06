@@ -3,28 +3,49 @@ import { Link } from 'react-router-dom';
 import '../../App.css';
 import { useHistory } from 'react-router';
 import LoginBackground from './LoginBackground';
+import { useCookies } from 'react-cookie';
+
 
 const Login = () => {
     const[email, setEmail] = useState("");
     const[userName, setUserName] = useState("");
     const[password, setPassword] = useState("");
     const[isPending, setIsPending] = useState(false);
+    const[cookies, setCookie] = useCookies(['user'])
     const history = useHistory();
 
+    //const dispatch = useDispatch();
+
+
+
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         const UserInfo = {userName, email, password}
 
         setIsPending(true);
-        fetch("http://localhost:3456/login",{
+        fetch("http://localhost:3456/api/verify/login",{
           method:"POST",
           headers:{"Content-Type": "application/json"},
           body:JSON.stringify(UserInfo)
-        }).then(() => {
+        }).then((res) => {
           setIsPending(false);
+          return res.json();
           //history.push('/UserPage');
+        }).then(data => {
+          const items = data;
+          if(items != 'undefined'){
+            setCookie('userName', items.userName, { path:'/'});
+            setCookie('_id', items._id, { path:'/' });
+            setCookie('email', items.email, { path:'/' });
+            setCookie('level', items.level, { path: '/'});
+            history.push('/UserPage');
+          }
+          
         })
+        
     }
+    
 
     return(
       <div className='signup-wrap'>
@@ -38,6 +59,7 @@ const Login = () => {
               <input
                 type="string"
                 required
+                name='email'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -45,6 +67,7 @@ const Login = () => {
               <input
                 type="string"
                 required
+                name='username'
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
               />
@@ -53,7 +76,7 @@ const Login = () => {
                 type="password"
                 required
                 id="pwd"
-                name="pwd"
+                name="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />

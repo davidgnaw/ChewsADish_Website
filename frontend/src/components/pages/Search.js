@@ -6,7 +6,7 @@ import RecipeList from '../RecipeList';
 import RandomBackground from './RandomBackground';
 
 const Search = () => {
-    const[search,setSearch] = useState('');
+    const[search,setSearch] = useState(' ');
     const [recipes, setRecipes] = useState(null);
     const [isPending, setIsPending] = useState(true);
     const [results, setResults] = useState(null);
@@ -15,10 +15,12 @@ const Search = () => {
     useEffect(() => {
         fetch('http://localhost:3456/api/recipes')
             .then(res => {
+                setIsPending(true);
                 return res.json();
             })
             .then(data => {
                 setRecipes( data );
+                setIsPending(false);
                 setIsPending(false);
             })
     }, []);
@@ -43,6 +45,9 @@ const Search = () => {
 
 
     return(
+        <>
+        { isPending && <div> Loading... </div> }
+        { !isPending && 
         <div className='signup-wrap'>
             <RandomBackground/>
         <div className="CreateYourOwnRecipe">
@@ -86,6 +91,8 @@ const Search = () => {
             <br/>
         </div>
         </div>
+}
+      </>  
     )
 }
 

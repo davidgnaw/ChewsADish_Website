@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom'
-import Button from 'react-bootstrap/Button'
+import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 
 import {
@@ -13,17 +13,20 @@ import {
 } from "./HeroElements";
 
 const Hero = (props) => {
-  const Hero = props.userInfo
+  const userInfo = props.userInfo;
+
+  /*
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => {
     setIsOpen(!isOpen);
   };
+  */
+
 
   return (
     <main>
 
-    {Hero.map((userInfo) => (
       <HeroContainer>
         <HeroWrapper>
           <HeroLeft>
@@ -31,13 +34,9 @@ const Hero = (props) => {
             <h5>level: {userInfo.level}</h5>
             <p>
               {userInfo.discription}
-              Add description...
             </p>
           <br></br>
             <Link to="/UserProfile">
-          <Button variant="dark" className="btn-dark">  
-          User Settings
-           </Button>
             </Link>
             <br></br>
             <Link to="/CreateYourOwnRecipe">
@@ -49,18 +48,14 @@ const Hero = (props) => {
           
           </HeroLeft>
           <HeroRight>
-            <Image
-               src={userInfo.userPicture}
-               alt="profilepic"
-
-              //template photo
-              //src="images/chefprofilepic.png"
-              //alt="chefprofilepic"
-            />
+            <h5>
+              E-mail:
+              {userInfo.email}
+            </h5>
           </HeroRight>
         </HeroWrapper>
       </HeroContainer>
-    )) }
+     
     </main>
   );
 }

@@ -16,6 +16,7 @@ import Search from './components/pages/Search';
 import IngredientWalmart from './components/pages/IngredientWalmart';
 import IngredientDetail from './components/pages/IngredientDetail';
 import SingleGallary from "./components/pages/SingleGallary";
+import { Provider, useDispatch } from 'react-redux';
 
 const ScrollIntoView = ({ children, location }) => {
   const prevLocation = useRef();

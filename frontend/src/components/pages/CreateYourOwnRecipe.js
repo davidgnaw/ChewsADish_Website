@@ -4,15 +4,18 @@ import { useHistory } from 'react-router';
 
 const CreateYourOwnRecipe = () => {
     const[name, setRecipeFor] = useState("");
-    const[ingredients, setIngredients] = useState("");
-    const[instruction, setInstructions] = useState("");
-    const[Difficulty, setDifficulty] = useState("Medium")
+    const[ingredient, setIngredients] = useState("");
+    const[instructions, setInstructions] = useState("");
+    const[Difficulty, setDifficulty] = useState("Medium");
+    const[tag, setTags] = useState("");
     const[isPending, setIsPending] = useState(false)
     const history = useHistory();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const recipe = {name, instruction, ingredients}
+        const ingredients = new Array(ingredient);
+        const tags = new Array(tag);
+        const recipe = {name, instructions, ingredients, tags};
 
         setIsPending(true);
         fetch("http://localhost:3456/api/recipes",{
@@ -20,7 +23,7 @@ const CreateYourOwnRecipe = () => {
           headers:{"Content-Type": "application/json"},
           body:JSON.stringify(recipe)
         }).then(() => {
-          console.log(recipe)
+          console.log(recipe);
 
           setIsPending(false);
           history.go(-1);
@@ -44,14 +47,20 @@ const CreateYourOwnRecipe = () => {
                 <label>Ingredients:</label>
                 <textarea
                   required
-                  value={ingredients}
+                  value={ingredient}
                   onChange={(e) => setIngredients(e.target.value)}>   
                 </textarea>
                 <label>Instructions:</label>
                 <textarea
                   required
-                  value={instruction}
+                  value={instructions}
                   onChange={(e) => setInstructions(e.target.value)}>
+                </textarea>
+                <label>Tags:</label>
+                <textarea
+                  required
+                  value={tag}
+                  onChange={(e) => setTags(e.target.value)}>
                 </textarea>
                 <label>Difficulty</label>
                 <select
