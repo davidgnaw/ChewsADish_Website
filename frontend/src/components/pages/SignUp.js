@@ -22,7 +22,7 @@ const Signup = () => {
           body:JSON.stringify(userInfo)
         }).then(() => {
           setIsPending(false);
-          history.go(-1)
+          history.push("/Login");
         })
     }
 
@@ -61,6 +61,7 @@ const Signup = () => {
               { !isPending && <button>submit</button>}
               { isPending && <button disabled>loading...</button>}
           </form>
+          <h2>Remember to check spam for Email verification.</h2>
           <br></br>
           <p>
             Already have account?
