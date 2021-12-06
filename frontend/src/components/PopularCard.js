@@ -26,7 +26,7 @@ function PopularCards() {
             <CardItem
               src='/images/teaduck.png'
               text='Tea-smoked duck is a classic Chinese dish, and it normally involves an entire duck, lots of time, and at least three different cooking preparations, much like Peking duck.'
-              label='French'
+              label='Chinese'
               path='/Recipe/6199b0739443ef0d4123ac81'
             />
             <CardItem

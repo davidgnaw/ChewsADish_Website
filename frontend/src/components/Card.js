@@ -25,14 +25,14 @@ function Cards() {
             <CardItem
               src='/images/teaduck.png'
               text='Tea-smoked duck is a classic Chinese dish, and it normally involves an entire duck, lots of time, and at least three different cooking preparations, much like Peking duck.'
-              label='French'
+              label='Chinese'
               path='/Recipe/6199b0739443ef0d4123ac81'
             />
           </ul>
         </div>
       </div>
       <h1><img src='images/img9.jpg' alt='Japanese' width='100' height='80'/>
-          Japanese</h1>
+          Asian</h1>
       <div className='cards__container'>
         <div className='cards__wrapper'>
           <ul className='cards__items'>

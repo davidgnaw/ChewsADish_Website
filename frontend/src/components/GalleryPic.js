@@ -30,7 +30,7 @@ export function timeDifference(current, previous) {
 function GalleryPic({ post }) {
   console.log(post);
   const [likes, setLikes] = useState(
-    post.likes || Math.round(Math.random() * 10)
+    post.likeCount || "0"
   );
   const [isLikedByUser, setIsLikedByUser] = useState(false);
   const handleLikeClick = () => {
